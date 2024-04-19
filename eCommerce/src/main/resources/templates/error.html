@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<!-- Begin Slider With Category Menu Area -->
+<section layout:fragment="body">
+    <div class="container offset-sm-3 col-md-8 mt-lg-5">
+        <div class="row mt-2">
+            <div th:if="${param.invalid}" class="col-sm-8">
+                <p class="alert alert-danger">Invalid verification token.</p>
+            </div>
+            <div th:if="${param.expired}" class="col-sm-8">
+                <p class="alert alert-danger">This verification has already expired.</p>
+            </div>
+            <div th:if="${param.valid}" class="col-sm-8">
+                <p class="alert alert-info">Email verified successfully, please log in here.</p>
+            </div>
+            <div th:if="${param.logout}" class="col-sm-8">
+                <p class="alert alert-warning">You have been logged out.</p>
+            </div>
+        </div>
+    </div>
+    <!-- Body Wrapper End Here -->
+</section>

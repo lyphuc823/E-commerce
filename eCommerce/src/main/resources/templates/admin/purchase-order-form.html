@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{admin/index}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<!-- Begin Slider With Category Menu Area -->
+
+
+<div id="layoutSidenav_content" layout:fragment="body">
+    <div class="container">
+
+    <h1 class="mt-4">Purchase Order Directory</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+        <li class="breadcrumb-item active">Purchase Order</li>
+    </ol>
+
+    <p class="h4 mb-4">Save Purchase Order</p>
+
+    <form action="#" th:action="@{/admin/purchase-order/save}"
+          th:object="${purchaseOrder}" method="POST">
+
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{purchaseOrderId}" />
+
+        <input type="text" th:field="*{provider.providerName}"
+               class="form-control mb-4 w-25" placeholder="Provider name">
+        <p th:if="${#fields.hasErrors('provider.providerName')}" th:errors="*{provider.providerName}" class="error text-danger"></p>
+        <input type="datetime-local" th:field="*{orderDate}"
+               class="form-control mb-4 w-25" placeholder="Order date">
+        <input type="text" th:field="*{shippingAddress}"
+               class="form-control mb-4 w-25" placeholder="Shipping address">
+        <input type="text" th:field="*{purchaseOrderStatus.statusName}"
+               class="form-control mb-4 w-25" placeholder="Purchase order status">
+        <input type="text" th:field="*{paymentMethod}"
+               class="form-control mb-4 w-25" placeholder="Payment method">
+        <input type="text" th:field="*{paymentStatus}"
+               class="form-control mb-4 w-25" placeholder="Payment status">
+        <input type="number" th:field="*{totalAmount}"
+               class="form-control mb-4 w-25" placeholder="Total amount">
+        <button type="submit" class="btn btn-info col-2">Save</button>
+
+    </form>
+
+    <hr>
+    <a th:href="@{/admin/purchase-order/list}">Back to Purchase Order List</a>
+
+</div>
+</div>
+
+</html>
+
+
+
+
+
+
+

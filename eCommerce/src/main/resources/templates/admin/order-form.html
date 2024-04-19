@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{admin/index}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<!-- Begin Slider With Category Menu Area -->
+
+
+<div id="layoutSidenav_content" layout:fragment="body">
+    <div class="container">
+
+    <h1 class="mt-4">Order Directory</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+        <li class="breadcrumb-item active">Order</li>
+    </ol>
+
+    <p class="h4 mb-4">Save Order</p>
+
+    <form action="#" th:action="@{/admin/order/save}"
+          th:object="${order}" method="POST">
+
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{orderId}" />
+        <input type="datetime-local" th:field="*{orderDate}" class="form-control mb-4 w-25" placeholder="Order name">
+<!--        <input type="text" th:field="*{user}" class="form-control mb-4 w-25" placeholder="Order user">-->
+        <input type="text" th:field="*{shippingAddress}" class="form-control mb-4 w-25" placeholder="Order shipping address">
+        <input type="text" th:field="*{paymentMethod}" class="form-control mb-4 w-25" placeholder="Order payment method"></input>
+        <input type="text" th:field="*{paymentStatus}" class="form-control mb-4 w-25" placeholder="Order payment status"></input>
+        <input type="number" th:field="*{totalAmount}" class="form-control mb-4 w-25" placeholder="Order total amount"></input>
+
+        <p th:if="${#fields.hasErrors('shippingAddress')}" th:errors="*{shippingAddress}" class="error text-danger"></p>
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+
+    </form>
+
+    <hr>
+    <a th:href="@{/admin/order/list}">Back to Order List</a>
+
+</div>
+</div>
+
+</html>
+
+
+
+
+
+
+

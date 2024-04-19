@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{admin/index}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<!-- Begin Slider With Category Menu Area -->
+
+
+<div id="layoutSidenav_content" layout:fragment="body">
+    <div class="container">
+
+    <h1 class="mt-4">Product Image Directory</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+        <li class="breadcrumb-item active">Product Image</li>
+    </ol>
+
+    <p class="h4 mb-4">Save Product Image</p>
+
+    <form action="#" th:action="@{/admin/product/image/save/{productId}(productId=${productId})}"
+          th:object="${productImage}" method="POST">
+
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{imageId}" />
+
+        <input type="text" th:field="*{imageUrl}"
+               class="form-control mb-4 w-25" placeholder="Product imageUrl">
+        <p th:if="${#fields.hasErrors('imageUrl')}" th:errors="*{imageUrl}" class="error text-danger"></p>
+        <input type="text" th:field="*{isPrimary}"
+               class="form-control mb-4 w-25" placeholder="Product Image isPrimary">
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+
+    </form>
+
+    <hr>
+    <a th:href="@{/admin/product/image/{productId}(productId=${productId})}">Back to Product Image List</a>
+
+</div>
+</div>
+
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{admin/index}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<!-- Begin Slider With Category Menu Area -->
+
+
+<div id="layoutSidenav_content" layout:fragment="body">
+    <div class="container">
+
+    <h1 class="mt-4">Provider Directory</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+        <li class="breadcrumb-item active">Provider</li>
+    </ol>
+
+    <p class="h4 mb-4">Save Provider</p>
+
+    <form action="#" th:action="@{/admin/provider/save}"
+          th:object="${provider}" method="POST">
+
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{providerID}" />
+
+        <input type="text" th:field="*{providerName}"
+               class="form-control mb-4 w-25" placeholder="Provider name">
+        <p th:if="${#fields.hasErrors('providerName')}" th:errors="*{providerName}" class="error text-danger"></p>
+        <input type="text" th:field="*{contactPerson}"
+               class="form-control mb-4 w-25" placeholder="Provider contact person">
+        <input type="text" th:field="*{contactEmail}"
+               class="form-control mb-4 w-25" placeholder="Provider contact email">
+        <input type="text" th:field="*{contactNumberPhone}"
+               class="form-control mb-4 w-25" placeholder="Provider contact phone number">
+        <input type="text" th:field="*{address}"
+               class="form-control mb-4 w-25" placeholder="Provider address">
+        <input type="text" th:field="*{isActive}"
+               class="form-control mb-4 w-25" placeholder="Provider is active">
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+
+    </form>
+
+    <hr>
+    <a th:href="@{/admin/provider/list}">Back to Provider List</a>
+
+</div>
+</div>
+
+</html>
+
+
+
+
+
+
+
