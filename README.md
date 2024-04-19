@@ -1,1 +1,1 @@
-Project used Spring Boot 3, Spring Security 6, Thymeleaf, MySQL
+Project used Spring Boot 3, Spring Security 6, Thymeleaf, MySQL, JPA
